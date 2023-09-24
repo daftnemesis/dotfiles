@@ -12,6 +12,7 @@
         "cpu",
         "memory",
         "custom/waybar-mpris",
+        "custom/cputemp",
     ],
 
     "modules-center":[
@@ -21,6 +22,7 @@
     "modules-right": [
         "custom/uptime",
         "tray",
+        "pulseaudio",
         "clock",
         "custom/power",
         
@@ -102,5 +104,37 @@
         "format": "<span font='11' rise='500'></span> {}",
         "exec": "~/.config/hypr/scripts/upt",
         "interval": 60,
+        },
+
+    "custom/cputemp":{
+        "format": "<span font='10' rise='1500'></span> {}",
+        "exec": "~/.config/hypr/scripts/cputemp",
+        "interval": 15,
+        },
+
+    "pulseaudio": {
+        "format": "<span font='13' rise='1000'>{icon}</span> {volume}",
+        "tooltip-format": "{volume}",
+        "format-muted": "<span font='13' rise='1000'></span>",
+        "format-bluetooth": "<span font='13' rise='1000'></span> {volume} {format_source}",
+        "format-bluetooth-muted": "<span font='13' rise='1000'></span> Mute",
+        "format-source": "<span font='13' rise='1000'></span> {volume}",
+        "format-source-muted": "<span font='13' rise='1000'></span>",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5.0,
+        "on-click": "pamixer -t",
+        "on-click-right": "kitty --class update -T update -e pulsemixer",
+        "on-click-middle": "pavucontrol",
+        "on-scroll-up": "~/.config/hypr/scripts/volume --inc",
+        "on-scroll-down": "~/.config/hypr/scripts/volume --dec",
+        "smooth-scrolling-threshold": 1,
         },
 }
