@@ -1,0 +1,177 @@
+@import "mocha.css";
+
+* {
+  font-family: Symbols Nerd Font, Iosevka Medium, monospace;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  min-height: 0;
+}
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar.hidden {
+  opacity: 0.5;
+}
+
+#waybar.empty #window {
+  background: none;
+}
+
+.modules-left, .modules-center, .modules-right {
+  background: #1e1e2e;;
+  border: 3px solid #6c7086;
+  padding: 0px 5px;
+}
+
+.modules-center {
+  /* border: 3px solid @lavender; */
+  margin: 0px 5px;
+}
+
+#idle_inhibitor,
+#backlight,
+#battery,
+#clock,
+#cpu,
+#disk,
+#mode,
+#memory,
+#tray,
+#pulseaudio,
+#custom-menu,
+#custom-power,
+#custom-weather,
+#custom-updater,
+#custom-vpn_check,
+#custom-uptime,
+#custom-cputemp,
+#custom-waybar-mpris,
+#window,
+#submap,
+#network {
+  padding: 4px 4px;
+}
+
+#idle_inhibitor {
+  color: #89b4fa;
+}
+
+#backlight {
+  color: #89b4fa;
+}
+
+#battery {
+  color: #a6e3a1;
+}
+
+@keyframes blink {
+  to {
+    color: #313244;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f38ba8;
+  color: #cdd6f4;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#clock {
+  color: #f9e2af;
+}
+
+#cpu {
+  color: #a6e3a1;
+}
+
+#memory {
+  color: #89dceb;
+}
+
+#disk {
+  color: #74c7ec;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+#workspaces button.persistent {
+  color: #45475a;
+  border-radius: 0px;
+}
+
+#workspaces button.active {
+  color: #fab387;
+  border-radius: 0px;
+}
+
+#custom-menu {
+  color: #f5e0dc;
+}
+
+#custom-power {
+  color: #f38ba8;
+  margin-right: 3px;
+}
+
+#custom-updater {
+  color: #f38ba8;
+}
+
+#custom-uptime {
+  color: #89b4fa;
+}
+
+#custom-weather {
+  color: #b4befe;
+}
+
+#custom-vpn_check {
+  color: #89dceb;
+}
+#custom-cputemp {
+  color: #94e2d5;
+}
+
+#pulseaudio {
+  color: #74c7ec;
+}
+
+#pulseaudio.bluetooth {
+  color: #f5c2e7;
+}
+#pulseaudio.muted {
+  color: #f38ba8;
+}
+
+#window {
+  color: #cba6f7;
+}
+
+#custom-waybar-mpris {
+  color:#b4befe;
+}
+
+#network {
+  color: #94e2d5;
+}
+#network.disconnected,
+#network.disabled {
+  background-color: #313244;
+  color: #cdd6f4;
+}

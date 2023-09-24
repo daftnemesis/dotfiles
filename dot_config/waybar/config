@@ -1,0 +1,106 @@
+//global
+
+{
+    "layer":"top",
+    "position":"top",
+    "margin":"3, 0, 2, 0",
+
+    "height":"10",
+
+    "modules-left":[
+        "custom/launcher",
+        "cpu",
+        "memory",
+        "custom/waybar-mpris",
+    ],
+
+    "modules-center":[
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "custom/uptime",
+        "tray",
+        "clock",
+        "custom/power",
+        
+    ],
+
+
+    //Modules
+    "custom/launcher": {
+        "format":"",
+        "on-click":"exec wofi -c ~/.config/wofi/config -I",
+        "tooltip":false
+    },
+
+    "custom/power": {
+        "format":"⏻",
+        "on-click": "exec wlogout",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": "  {usage}%",
+        "max-length": 10,
+        "on-click": "kitty -e 'htop'"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "  {}%", // Icon: memory
+        "on-click": "kitty -e 'htop'", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "backlight": {
+        "interval": 30,
+        "align": 0,
+        "rotate": 0,
+          "format": "<span font='10' rise='1500'>{icon}</span> {percent}",
+          "format-icons": ["", "", "", ""],
+          "on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
+          "on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
+          "smooth-scrolling-threshold": 1,
+        },
+
+    "clock": {
+        "interval": 60,
+        "align": 0,
+        "rotate": 0,
+        "format": "{:%d %b <span rise='1000'>⁙</span> %I:%M %p}",
+        "format-alt": "{:%A <span rise='1000'>⁙</span> %d %B %Y <span rise='1000'>⁙</span> %I:%M %p}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        },
+
+    "tray": {
+        "spacing": 10,
+        "icon-size": 13
+        },
+
+    "custom/waybar-mpris": {
+        // "format": "<span rise='1000'>⁙</span> {} <span rise='1000'>⁙</span>",
+        "return-type": "json",
+        "exec": "waybar-mpris --position --autofocus --order 'SYMBOL:POSITION' --separator string '⁙'",
+        "on-click": "waybar-mpris --send toggle",
+        // This option will switch between players on right click.
+        "on-click-right": "waybar-mpris --send player-next",
+        // The options below will switch the selected player on scroll
+        // "on-scroll-up": "waybar-mpris --send player-next",
+        // "on-scroll-down": "waybar-mpris --send player-prev",
+        // The options below will go to next/previous track on scroll
+        "on-scroll-up": "waybar-mpris --send next",
+        "on-scroll-down": "waybar-mpris --send prev",
+        "escape": true,
+        },
+
+    "custom/uptime":{
+        "format": "<span font='11' rise='500'></span> {}",
+        "exec": "~/.config/hypr/scripts/upt",
+        "interval": 60,
+        },
+}
